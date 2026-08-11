@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "grill-me-skill-spec.md",
+                "file": "grill-me-skill-plan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "grill-me-skill-spec"
+              "title": "grill-me-skill-plan"
             }
           }
         ]
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "grill-me-skill-spec.md",
+                "file": "grill-me-skill-plan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "grill-me-skill-spec.md",
+                "file": "grill-me-skill-plan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "grill-me-skill-spec.md",
+                "file": "grill-me-skill-plan.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,9 +190,9 @@
   },
   "active": "5f13fc0c0f4ce517",
   "lastOpenFiles": [
+    "grill-me-skill-spec.md",
     "grill-me-skill-plan.md",
     "skills/grill-me/SKILL.md",
-    "grill-me-skill-spec.md",
     "SPEC.md",
     "GEMINI.md",
     "OBJECTIVE.md",
