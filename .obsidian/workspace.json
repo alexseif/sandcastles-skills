@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "skills/grill-me/SKILL.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "SKILL"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "english",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "skills/grill-me/SKILL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "skills/grill-me/SKILL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "skills/grill-me/SKILL.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,19 +188,19 @@
       "bases:Create new base": false
     }
   },
-  "active": "5f13fc0c0f4ce517",
+  "active": "b47792a9d3cd93b2",
   "lastOpenFiles": [
+    "skills/document/SKILL.md",
+    "skills/grill-me/SKILL.md",
     "ai-work/docs/adr-001-sandcastles-skills-architecture.md",
+    "README.md",
     "ai-work/docs",
     "ai-work",
-    "skills/document/SKILL.md",
     "document-skill-test.md",
-    "README.md",
     "grill-me-skill-test.md",
     "skills/document",
     "document-skill-plan.md",
     "document-skill-spec.md",
-    "skills/grill-me/SKILL.md",
     "grill-me-skill-plan.md",
     "grill-me-skill-spec.md",
     "SPEC.md",

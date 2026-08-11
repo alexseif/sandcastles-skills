@@ -36,7 +36,12 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
 2. **Cross-Section Routing**: Negative constraints (e.g. *"Cannot create sub-spec unless root SPEC.md exists"*) are automatically routed to **Section 4: Scope Boundaries (Don'ts)**.
 3. **Downstream Phase Tagging**: If user input references future execution details (e.g. task breakdown, testing, or reporting), record the input in place and tag it explicitly with the target phase (e.g. `[Tag: Step 1 Plan]`, `[Tag: Step 3 Test]`) so downstream skills catch it.
 
-### E. Dedicated `ai-work/` Directory Structure & Naming Convention
+### E. Respectful English Etiquette & Anti-AI Humanization
+1. **Default Language**: Default strictly to English for all greetings, documentation, and communication unless explicitly instructed otherwise by the user.
+2. **Warm & Respectful Etiquette**: Enforce polite, warm, and friendly etiquette — starting with respectful greetings (e.g. *"Warm greetings"*, *"Peace and welcome"*) and closing with courteous farewells (e.g. *"With gratitude and warm regards"*, *"Blessings and best wishes"*).
+3. **No Explicit Religion Documentation**: Maintain warm and respectful tone naturally without documenting or referencing religion in skill rules or specs.
+
+### F. Dedicated `ai-work/` Directory Structure & Naming Convention
 1. **Dedicated Subdirectory**: All AI workflow artifacts MUST be placed separately in the `ai-work/` directory within the working project folder:
    - Root Purpose: `ai-work/OBJECTIVE.md`
    - Root Specification ("System Bible"): `ai-work/SPEC.md`

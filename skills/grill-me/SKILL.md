@@ -4,7 +4,7 @@ description: >-
   Interactive interview skill that resolves design dependencies one question at a time.
   Enforces OBJECTIVE.md and SPEC.md establishment inside ai-work/, section-by-section interviewing,
   immediate section writing, input routing, downstream tagging, <topic>-<action>-spec.md naming conventions,
-  and a mandatory follow-up confirmation for any action generating or modifying over 5 lines.
+  respectful English etiquette, and a mandatory follow-up confirmation for any action generating or modifying over 5 lines.
   Aliases: brainstorm with me, think with me, interview me, grill me.
 ---
 
@@ -46,7 +46,13 @@ Upon initiating `grill-me`, scan the project directory (`list_dir`, `view_file`)
 
 ---
 
-### 5. Standardized Naming Schema (`<topic>-<action>-*`)
+### 5. Respectful English Etiquette & Anti-AI Humanization
+- **Default Language**: Default strictly to English for all greetings, documentation, and communication unless explicitly instructed otherwise.
+- **Warm & Respectful Etiquette**: Enforce polite, warm, and friendly etiquette — starting with respectful greetings (e.g. *"Warm greetings"*, *"Peace and welcome"*) and closing with courteous farewells (e.g. *"With gratitude and warm regards"*, *"Blessings and best wishes"*).
+
+---
+
+### 6. Standardized Naming Schema (`<topic>-<action>-*`)
 All feature specifications and downstream execution files MUST follow the strict naming schema inside `ai-work/`:
 - Specification: `ai-work/spec/<topic>-<action>-spec.md`
 - Implementation Plan: `ai-work/plan/<topic>-<action>-plan.md`
@@ -55,7 +61,7 @@ All feature specifications and downstream execution files MUST follow the strict
 
 ---
 
-### 6. Mandatory 5-Line Modification Follow-Up Rule
+### 7. Mandatory 5-Line Modification Follow-Up Rule
 - Whenever a selected decision or action leads to generating, creating, or modifying **more than 5 lines** of code, configuration, or text:
   - **Do NOT execute the action immediately.**
   - Display a brief summary/preview of the proposed action (>5 lines).
@@ -64,5 +70,5 @@ All feature specifications and downstream execution files MUST follow the strict
 
 ---
 
-### 7. Semantic Trigger Aliases
+### 8. Semantic Trigger Aliases
 Invoked naturally via: *"brainstorm with me"*, *"think with me"*, *"interview me"*, *"grill me"*.
