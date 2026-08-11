@@ -188,10 +188,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "b47792a9d3cd93b2",
+  "active": "5f13fc0c0f4ce517",
   "lastOpenFiles": [
-    "skills/document/SKILL.md",
+    "GEMINI.md",
     "skills/grill-me/SKILL.md",
+    "skills/document/SKILL.md",
     "ai-work/docs/adr-001-sandcastles-skills-architecture.md",
     "README.md",
     "ai-work/docs",
@@ -204,7 +205,6 @@
     "grill-me-skill-plan.md",
     "grill-me-skill-spec.md",
     "SPEC.md",
-    "GEMINI.md",
     "OBJECTIVE.md",
     "workflow-harness-core-spec.md",
     "skills/code/SKILL.md",
