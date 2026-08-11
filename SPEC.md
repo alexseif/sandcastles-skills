@@ -46,3 +46,20 @@ Build and structure the multi-provider, multi-domain workflow harness inside `sa
 - **Software Architect Agent**: Defines root system architecture, specification structures, and governance rules.
 - **Technical Writer / Documentation Agent**: Maintains clear technical specifications, runbooks, and ADRs.
 - **Content Writer Agent**: Generates domain content, workflow guidelines, and user-facing documentation.
+
+---
+
+## 🛑 4. Scope Boundaries (Do's & Don'ts)
+
+### ✅ Do's
+1. **Workspace Boundary**: Restrict all file operations to the workspace project directory and the `~/.agents` / `~/.gemini` discovery symlinks.
+2. **Context Inquiry**: Ask the user where content is hosted, end result expectations, and align them explicitly with `OBJECTIVE.md`.
+3. **5-Line Modification Preview**: Present a preview and request follow-up confirmation for any action generating or modifying $> 5$ lines.
+4. **Version Control**: Push all validated changes to the GitHub repository `sandcastles-skills`.
+
+### ❌ Don'ts
+1. **No Spec Without Objective**: Don't generate `SPEC.md` or any sub-spec without an established `OBJECTIVE.md`.
+2. **No Sub-Spec Without Root Spec**: Don't generate sub-specs (`<topic>-<action>-spec.md`) unless the general root `SPEC.md` ("The System Bible") exists first.
+3. **Separation of Concerns**: Don't pollute specs with out-of-scope items. If an item is out of scope, advise the user to place it in its respective workflow or separate sub-spec.
+4. **Immutability of Established Rules**: Don't update `OBJECTIVE.md`, root `SPEC.md`, or created sub-specs without explicit user approval. Treat them as established rules to strictly obey.
+5. **No Guessing Ambiguity**: Don't make unverified assumptions — stop and present $\ge 2$ trade-off options for user decision.
