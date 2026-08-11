@@ -29,3 +29,20 @@ Build and structure the multi-provider, multi-domain workflow harness inside `sa
 3. **Modular Skills & Rules Roster**:
    - `skills/` folder containing custom workflow skill runbooks.
    - `rules/` folder containing modular tech-stack guidelines (`node-ts.md`, `php.md`, `python.md`, `go.md`).
+
+---
+
+## 🛠️ 3. Utilities to Use
+
+### Core Technical Utilities
+- **Version Control & Hosting**: Git, GitHub CLI (`gh`), repository `git@github.com:alexseif/sandcastles-skills.git`.
+- **Global Discovery Symlinks**: `~/.agents` $\rightarrow$ `/home/alexseif/dev/sandcastles-skills`.
+- **Cross-Model Governance Symlinks**: `AGENTS.md` and `CLAUDE.md` $\rightarrow$ `GEMINI.md`.
+- **File Formats & Structure**: Standard GitHub Markdown (`.md`), YAML frontmatter headers.
+- **Naming Schemas**: `<topic>-<action>-spec.md`, `<topic>-<action>-plan.md`, `<topic>-<action>-todo.md`, `<topic>-<action>-test.md`.
+- **Supported AI Models & Tools**: Google Gemini, Anthropic Claude, OpenAI GPT-4, DeepSeek, Local LLMs (Ollama / LM Studio).
+
+### Functional Agent Roles Assigned
+- **Software Architect Agent**: Defines root system architecture, specification structures, and governance rules.
+- **Technical Writer / Documentation Agent**: Maintains clear technical specifications, runbooks, and ADRs.
+- **Content Writer Agent**: Generates domain content, workflow guidelines, and user-facing documentation.
