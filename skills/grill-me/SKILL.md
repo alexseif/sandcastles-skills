@@ -2,7 +2,7 @@
 name: grill-me
 description: >-
   Interactive interview skill that resolves design dependencies one question at a time.
-  Enforces Objective-First alignment, conflict checking, sub-objective forking,
+  Enforces Objective.md and Spec.md establishment, conflict checking, sub-objective forking,
   and a mandatory follow-up confirmation for any action generating or modifying over 5 lines.
 ---
 
@@ -12,14 +12,14 @@ This skill governs interactive design interviews and decision alignment.
 
 ## Core Protocol Rules
 
-### 1. Objective-First Establishment (Step 0)
-- **First Action**: Establish and explicitly record the single primary objective of the session.
-- Every session must have **1 Core Objective** and grow/expand systematically from there.
+### 1. Objective & Spec Establishment (Step 0a & 0b)
+- **Step 0a**: Establish and record the High-Level Purpose in `OBJECTIVE.md`.
+- **Step 0b**: Establish and record concrete specifications, tech stack, constraints, and formats in `SPEC.md`.
 
-### 2. Objective Alignment & Conflict Resolution
-- Evaluate every follow-up question, design decision, and proposed option against the established Core Objective.
-- **If a decision/request conflicts with the Core Objective**:
-  - **Option A (Objective Update)**: Explicitly update and broaden the Core Objective with user agreement.
+### 2. Objective & Spec Alignment & Conflict Resolution
+- Evaluate every follow-up question, design decision, and proposed option against `OBJECTIVE.md` and `SPEC.md`.
+- **If a decision/request conflicts**:
+  - **Option A (Update)**: Explicitly update and broaden `OBJECTIVE.md` / `SPEC.md` with user agreement.
   - **Option B (Sub-Objective Fork)**: Fork the conflicting topic into a separate sub-objective or new branch to keep concerns cleanly isolated.
 
 ### 3. Sequential Interviewing
