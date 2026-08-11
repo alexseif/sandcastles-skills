@@ -3,9 +3,8 @@ name: grill-me
 description: >-
   Interactive interview skill that resolves design dependencies one question at a time.
   Enforces Objective.md and Spec.md establishment, section-by-section interviewing,
-  <topic>-<action>-spec.md naming conventions, collision detection, and a mandatory
-  follow-up confirmation for any action generating or modifying over 5 lines.
-  Aliases: brainstorm with me, think with me, interview me, grill me.
+  <topic>-<action>-spec.md naming conventions, and a mandatory follow-up confirmation
+  for any action generating or modifying over 5 lines.
 ---
 
 # Grill Me Skill
@@ -16,7 +15,7 @@ This skill governs interactive design interviews and decision alignment.
 
 ### 1. Objective & Spec Establishment (Step 0a & 0b)
 - **Step 0a**: Establish and record the High-Level Purpose in `OBJECTIVE.md`.
-- **Step 0b**: Establish concrete specifications via section-by-section interviewing, saving to `<topic>-<action>-spec.md`. Root `SPEC.md` acts as "The System Bible".
+- **Step 0b**: Establish concrete specifications via section-by-section interviewing, saving to `<topic>-<action>-spec.md`.
 
 ### 2. Section-by-Section `SPEC.md` Interview Protocol
 - **Never Assume Spec Sections**: Do NOT populate any section of `SPEC.md` based on assumptions.
@@ -25,14 +24,15 @@ This skill governs interactive design interviews and decision alignment.
   - **Question B (Section 3: Utilities to Use)**: Interview the user explicitly on assigned agents, tech stack, file formats, frameworks, and external tools.
   - **Question C (Section 4: Scope Boundaries)**: Interview the user explicitly on explicit boundary controls (Do's & Don'ts).
 
-### 3. Feature Naming Schema & Collision Detection
-- All feature specifications and downstream execution files MUST follow the strict naming schema: `<topic>-<action>-spec.md`, `<topic>-<action>-plan.md`, `<topic>-<action>-todo.md`, `<topic>-<action>-test.md`.
-- **Collision Detection**: If a conversation or requirement touches an existing spec:
-  - **Option A (Update)**: Expand existing spec file with explicit user consent.
-  - **Option B (New Spec)**: Create a new spec file with a refined topic/action name.
+### 3. Feature Naming Schema (`<topic>-<action>-*`)
+All feature specifications and downstream execution files MUST follow the strict naming schema:
+- Specification: `<topic>-<action>-spec.md`
+- Plan: `<topic>-<action>-plan.md`
+- Todo: `<topic>-<action>-todo.md`
+- Test: `<topic>-<action>-test.md`
 
-### 4. Semantic Trigger Aliases
-Invoked naturally via: *"brainstorm with me"*, *"think with me"*, *"interview me"*, *"grill me"*.
+### 4. Objective Expansion on Ambiguity
+If a new sub-spec or feature is not explicitly covered in `OBJECTIVE.md`, present the user with the option to expand `OBJECTIVE.md` to detail it further before drafting the spec.
 
 ### 5. Mandatory 5-Line Modification Follow-Up Rule
 - Whenever a selected decision or action leads to generating, creating, or modifying **more than 5 lines** of code, configuration, or text:

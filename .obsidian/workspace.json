@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "skills/code/SKILL.md",
+                "file": "workflow-harness-core-spec.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SKILL"
+              "title": "workflow-harness-core-spec"
             }
           }
         ]
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "skills/code/SKILL.md",
+                "file": "workflow-harness-core-spec.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "skills/code/SKILL.md",
+                "file": "workflow-harness-core-spec.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "skills/code/SKILL.md",
+                "file": "workflow-harness-core-spec.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,21 +190,11 @@
   },
   "active": "5f13fc0c0f4ce517",
   "lastOpenFiles": [
-    "skills/report/SKILL.md",
-    "skills/report",
-    "skills/test/SKILL.md",
-    "skills/test",
-    "skills/review/SKILL.md",
-    "skills/review",
-    "workflow-harness-core-spec.md",
-    "skills/code/SKILL.md",
-    "skills/code",
     "SPEC.md",
-    "skills/grill-me/SKILL.md",
-    "skills/plan/SKILL.md",
-    "GEMINI.md",
-    "skills/plan",
+    "workflow-harness-core-spec.md",
     "OBJECTIVE.md",
+    "GEMINI.md",
+    "skills/grill-me/SKILL.md",
     "README.md"
   ]
 }
