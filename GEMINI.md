@@ -13,12 +13,14 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
 2. **Domain Agnostic**: Defines the primary goal (e.g. *"Build an app in Cairo"*, *"Write an article on AI"*).
 
 ### B. Concrete Specifications (`SPEC.md`)
-1. **Define Specifications Second**: Following `OBJECTIVE.md`, create `SPEC.md` outlining all concrete constraints, requirements, and quality standards:
-   - **Software Engineering**: Tech stack, design patterns, coding standards, CV/community documentation goals, test coverage targets.
-   - **Document Writing**: Tone/humanization guidelines, logical flow, target audience, references.
-   - **Media & Design**: File types (SVG/PNG/MP4), resolution, color palette, responsive breakpoints.
-2. **Traceability**: All subsequent tool calls, code, writing, and sub-tasks MUST align with both `OBJECTIVE.md` and `SPEC.md`.
-3. **Conflict Management**:
+1. **Define Specifications Second**: Following `OBJECTIVE.md`, create `SPEC.md` outlining all concrete constraints, requirements, and quality standards.
+2. **Standard 4-Part `SPEC.md` Template**:
+   - **Section 1: Objective Alignment** — Explicit reference to `OBJECTIVE.md`.
+   - **Section 2: Description of Specifications** — Detailed specifications, technical constraints, quality targets.
+   - **Section 3: Utilities to Use** — Agents assigned, tech stack, file formats, frameworks, external tools.
+   - **Section 4: Scope (Do's & Don'ts)** — Explicit boundaries control (what is in scope vs out of scope).
+3. **Traceability**: All subsequent tool calls, code, writing, and sub-tasks MUST align with both `OBJECTIVE.md` and `SPEC.md`.
+4. **Conflict Management**:
    - If a new requirement conflicts with `OBJECTIVE.md` or `SPEC.md`:
      - **Option A (Update)**: Update `OBJECTIVE.md` / `SPEC.md` with explicit user consent.
      - **Option B (Fork)**: Fork a sub-objective/sub-spec into a separate isolated branch.
@@ -39,7 +41,7 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
 
 Every task follows a strict 6-stage lifecycle:
 1. **Step 0a: Establish Objective** — Document high-level goal in `OBJECTIVE.md`.
-2. **Step 0b: Define Specifications** — Document concrete standards, tech stack, and formats in `SPEC.md`.
+2. **Step 0b: Define Specifications** — Document concrete standards, tech stack, and formats in `SPEC.md` (4-part template).
 3. **Step 1: Task Planning** — Decompose `SPEC.md` into isolated, testable tasks.
 4. **Step 2: Execution** — Implement strictly within scope boundaries.
 5. **Step 3: Verification** — Run tests, builds, or quality checks to verify against `SPEC.md`.
