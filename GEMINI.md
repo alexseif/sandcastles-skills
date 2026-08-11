@@ -10,10 +10,10 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
 
 ### A. High-Level Purpose (`OBJECTIVE.md`)
 1. **Establish Purpose First**: No work begins without a clearly established **High-Level Purpose** documented in `OBJECTIVE.md`.
-2. **Domain Agnostic**: Defines the primary goal (e.g. *"Build an app in Cairo"*, *"Write an article on AI"*).
+2. **Domain Agnostic**: Defines the primary goal across all AI providers (Gemini, Claude, OpenAI, DeepSeek, Local Models).
 
-### B. Concrete Specifications (`SPEC.md`)
-1. **Define Specifications Second**: Following `OBJECTIVE.md`, create `SPEC.md` outlining all concrete constraints, requirements, and quality standards.
+### B. Root System Specification (`SPEC.md` — "The System Bible")
+1. **Root Specification**: The root `SPEC.md` acts as the foundational "System Bible" for the entire project. All branched sub-specs must align with it.
 2. **Standard 4-Part `SPEC.md` Template**:
    - **Section 1: Objective Alignment** — Explicit reference to `OBJECTIVE.md`.
    - **Section 2: Description of Specifications** — Detailed specifications, technical constraints, quality targets.
@@ -36,8 +36,19 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
    - Implementation Plan: `<topic>-<action>-plan.md`
    - Todo Breakdown: `<topic>-<action>-todo.md`
    - Test Suite: `<topic>-<action>-test.md`
-3. **Collision Prevention**: This strict naming scheme prevents task conflicts, file overwrites, and duplicated work.
+3. **Collision Prevention**: If a conversation or new requirement collides with an existing `<topic>-<action>-spec.md`:
+   - **Option A (Update)**: Update and expand the existing spec file with explicit user consent.
+   - **Option B (New Spec)**: Create a new distinct spec with a refined topic/action name if it represents a separate issue.
 4. **Objective Expansion on Ambiguity**: If a new sub-spec or feature is not explicitly covered in `OBJECTIVE.md`, present the user with the option to expand `OBJECTIVE.md` to detail it further before drafting the spec.
+
+### E. Standardized Skill Names & Semantic Aliases Roster
+All skills follow a unified structure and use short, consistent names with natural trigger aliases:
+1. **`grill-me`** (Aliases: *"brainstorm with me"*, *"think with me"*, *"interview me"*, *"grill me"*)
+2. **`plan`** (Aliases: *"let's plan"*, *"plan this feature"*, *"break down feature"*)
+3. **`code`** (Aliases: *"build"*, *"implement task"*, *"write code"*)
+4. **`review`** (Aliases: *"review work"*, *"review code"*, *"check quality"*)
+5. **`test`** (Aliases: *"run tests"*, *"verify task"*, *"test code"*)
+6. **`report`** (Aliases: *"generate report"*, *"summarize outcome"*, *"report outcome"*)
 
 ---
 

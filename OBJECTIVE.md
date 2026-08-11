@@ -1,3 +1,4 @@
+
 # 🎯 High-Level Purpose (`OBJECTIVE.md`)
 
 ## Primary Objective
