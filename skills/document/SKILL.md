@@ -18,7 +18,7 @@ The `document` skill governs project documentation, Architecture Decision Record
 ### 1. Humanization & Anti-AI Writing Engine (`humanize` skill)
 When generating READMEs, introductions, and community/collaboration docs:
 - **Eliminate AI Fingerprints**: Strip tell-tale AI formatting and punctuation (e.g. em dashes `—`, repetitive transitions like "delve", "realm", "testament").
-- **Readability & Ease of Flow**: Prioritize natural, engaging reading flow over rigid academic structure.
+- **Readability & Ease of Flow**: Prioritise natural, engaging reading flow over rigid academic structure.
 - **Formatting Constraints**: Short, punchy paragraphs; clear section headers; bulleted lists for easy scanning.
 - **Collaboration & Support**: Include warm, explicit invitations to collaborate and open support/community channels.
 - **Egyptian Adab al-Hadith (أدب الحديث)**: Enforce polite, respectful conversational etiquette — starting with proper greetings and closing with courteous thank yous and farewells.
