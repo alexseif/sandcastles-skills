@@ -10,11 +10,12 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
 
 ### A. High-Level Purpose (`OBJECTIVE.md`)
 1. **Establish Purpose First**: No work begins without a clearly established **High-Level Purpose** documented in `OBJECTIVE.md`.
-2. **Domain Agnostic**: Defines the primary goal (e.g. *"Build an app in Cairo"*, *"Write an article on AI"*).
+2. **Domain Agnostic**: Defines the primary goal across all AI providers (Gemini, Claude, OpenAI, DeepSeek, Local Models).
 
-### B. Concrete Specifications (`SPEC.md`)
-1. **Define Specifications Second**: Following `OBJECTIVE.md`, create `SPEC.md` outlining all concrete constraints, requirements, and quality standards.
-2. **Standard 4-Part `SPEC.md` Template**:
+### B. Root System Specification (`SPEC.md` — "The System Bible")
+1. **Root Specification**: The root `SPEC.md` acts as the foundational "System Bible" for the entire project. All branched sub-specs must align with it.
+2. **Root Spec Prerequisite**: Sub-specs (`<topic>-<action>-spec.md`) CANNOT be created unless the general root `SPEC.md` exists first.
+3. **Standard 4-Part `SPEC.md` Template**:
    - **Section 1: Objective Alignment** — Explicit reference to `OBJECTIVE.md`.
    - **Section 2: Description of Specifications** — Detailed specifications, technical constraints, quality targets.
    - **Section 3: Utilities to Use** — Agents assigned, tech stack, file formats, frameworks, external tools.
@@ -26,18 +27,25 @@ Regardless of domain (Software Engineering, Content Writing, Email Processing, M
    - **Question A (Section 2: Description of Specifications)**: First present `OBJECTIVE.md` to ground the context, then interview the user explicitly on the concrete specifications desired to achieve that objective.
    - **Question B (Section 3: Utilities to Use)**: Interview the user explicitly on assigned agents, tech stack, file formats, frameworks, and external tools.
    - **Question C (Section 4: Scope Boundaries)**: Interview the user explicitly on explicit boundary controls (Do's & Don'ts).
-3. **Mandatory 5-Line Modification Check**: After drafting each section, if the text exceeds 5 lines, show a preview and ask:
+3. **Immediate Section Writing**: As each section of a spec is approved, write it immediately to the file before moving to interview the next section.
+4. **Mandatory 5-Line Modification Check**: After drafting each section, if the text exceeds 5 lines, show a preview and ask:
    > *"Would you like to add, remove, or modify anything in this selected action before we proceed?"*
 
-### D. Feature Naming Convention & Multi-Spec Architecture
+### D. User Input Analysis, Section Routing & Downstream Tagging
+1. **Non-Concise Input Handling**: Do not assume user input applies exclusively to the current prompt. Analyze full intent and route ideas to their correct structural sections.
+2. **Cross-Section Routing**: Negative constraints (e.g. *"Cannot create sub-spec unless root SPEC.md exists"*) are automatically routed to **Section 4: Scope Boundaries (Don'ts)**.
+3. **Downstream Phase Tagging**: If user input references future execution details (e.g. task breakdown, testing, or reporting), record the input in place and tag it explicitly with the target phase (e.g. `[Tag: Step 1 Plan]`, `[Tag: Step 3 Test]`) so downstream skills catch it.
+
+### E. Feature Naming Convention & Multi-Spec Architecture
 1. **Sub-Spec Scope**: An `OBJECTIVE.md` can encompass multiple features or sub-components. Each feature gets its own dedicated specification.
 2. **Standardized Naming Schema**: All feature-level specs and downstream execution files MUST follow the strict naming format:
    - Specification: `<topic>-<action>-spec.md` (e.g., `admin-auth-spec.md`, `map-search-spec.md`)
    - Implementation Plan: `<topic>-<action>-plan.md`
    - Todo Breakdown: `<topic>-<action>-todo.md`
    - Test Suite: `<topic>-<action>-test.md`
-3. **Collision Prevention**: This strict naming scheme prevents task conflicts, file overwrites, and duplicated work.
-4. **Objective Expansion on Ambiguity**: If a new sub-spec or feature is not explicitly covered in `OBJECTIVE.md`, present the user with the option to expand `OBJECTIVE.md` to detail it further before drafting the spec.
+3. **Collision Prevention**: If a conversation or new requirement collides with an existing `<topic>-<action>-spec.md`:
+   - **Option A (Update)**: Update and expand the existing spec file with explicit user consent.
+   - **Option B (New Spec)**: Create a new distinct spec with a refined topic/action name if it represents a separate issue.
 
 ---
 

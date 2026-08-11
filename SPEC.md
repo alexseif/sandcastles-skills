@@ -3,39 +3,29 @@
 ---
 
 ## 🎯 1. Objective Alignment
-- **Target Objective**: Build, version, and continuously refine a modular, multi-domain AI agent workflow harness (`sandcastles-skills`) on GitHub that enforces disciplined execution across all coding, content, email, media, and research tasks.
+- **Target Objective**: Build, version, and continuously refine a multi-domain, multi-provider AI agent workflow harness (`sandcastles-skills`) on GitHub that enforces disciplined execution across all coding, content, email, media, and research tasks across major AI providers (Gemini, Claude, OpenAI, DeepSeek, Local Models), while strictly limiting AI eagerness to a defined scope of work.
 - **Reference**: Documented in [`OBJECTIVE.md`](./OBJECTIVE.md).
 
 ---
 
 ## 📝 2. Description of Specifications
-Detailed specifications for the `sandcastles-skills` repository ecosystem:
-- Global system governance defined via `GEMINI.md`.
-- Objective-First (`OBJECTIVE.md`) and Specification-First (`SPEC.md`) dual-harness.
-- Custom workflow skills roster in `skills/<name>/SKILL.md`.
-- Modular tech stack guidelines in `rules/<stack>.md`.
-- Ambiguity gatekeeping (stop & present $\ge 2$ options with trade-offs).
-- Mandatory 5-line modification follow-up confirmation.
 
----
+### System Specifications
+Build and structure the multi-provider, multi-domain workflow harness inside `sandcastles-skills`:
 
-## 🛠️ 3. Utilities to Use
-- **Version Control & Hosting**: Git, GitHub CLI (`gh`), repository `git@github.com:alexseif/sandcastles-skills.git`.
-- **Global Discovery**: Symlink `~/.agents` $\rightarrow$ `/home/alexseif/dev/sandcastles-skills`.
-- **Target Subagents**: `planner`, `coder`, `reviewer`, `tester`, `reporter`.
-- **File Formats**: Standard GitHub Markdown (`.md`), YAML Frontmatter (`SKILL.md`), Shell Scripts (`.sh`).
+1. **Global Governance (`GEMINI.md`)**:
+   - Universal Objective-First (`OBJECTIVE.md`) & Spec-First (`SPEC.md` / `<topic>-<action>-spec.md`) dual-harness.
+   - **Root Spec Prerequisite**: Sub-specs (`<topic>-<action>-spec.md`) CANNOT be created unless the general root `SPEC.md` ("System Bible") exists first.
+   - **Immediate Section Writing**: As each section of a spec is approved, write it immediately to the file before moving to interview the next section.
+   - **Input Routing & Downstream Tagging**: Route constraints to appropriate sections and tag future execution ideas (`[Tag: Step 1 Plan]`).
+   - Anti-eagerness protocols restricting AI execution to defined scope boundaries.
+   - Ambiguity gatekeeping (stop & present $\ge 2$ trade-off options).
+   - Mandatory 5-line modification follow-up confirmation.
 
----
+2. **Multi-Provider AI Support**:
+   - Cross-provider markdown configurations (`GEMINI.md`, `AGENTS.md`, `CLAUDE.md`).
+   - Compatibility across Google Gemini, Anthropic Claude, OpenAI GPT-4, DeepSeek, and Local LLMs (Ollama / LM Studio).
 
-## 🛑 4. Scope Boundaries (Do's & Don'ts)
-
-### ✅ Do's
-- Do establish `OBJECTIVE.md` (high-level purpose) and `SPEC.md` (specifications) before executing work.
-- Do present previews and ask confirmation for actions modifying $> 5$ lines.
-- Do enforce isolated, testable single tasks.
-- Do push all validated updates to GitHub repository `sandcastles-skills`.
-
-### ❌ Don'ts
-- Don't start coding, writing, or modifying files without an established objective and spec.
-- Don't refactor adjacent systems or delete existing code without explicit user approval.
-- Don't guess ambiguous requirements — stop and present 2 options with trade-offs.
+3. **Modular Skills & Rules Roster**:
+   - `skills/` folder containing custom workflow skill runbooks.
+   - `rules/` folder containing modular tech-stack guidelines (`node-ts.md`, `php.md`, `python.md`, `go.md`).
