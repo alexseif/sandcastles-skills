@@ -2,7 +2,7 @@
 name: grill-me
 description: >-
   Interactive interview skill that resolves design dependencies one question at a time.
-  Enforces Objective.md and Spec.md establishment, section-by-section interviewing,
+  Enforces OBJECTIVE.md and SPEC.md establishment inside ai-work/, section-by-section interviewing,
   immediate section writing, input routing, downstream tagging, <topic>-<action>-spec.md naming conventions,
   and a mandatory follow-up confirmation for any action generating or modifying over 5 lines.
 ---
@@ -13,9 +13,10 @@ This skill governs interactive design interviews and decision alignment.
 
 ## Core Protocol Rules
 
-### 1. Objective & Spec Establishment (Step 0a & 0b)
-- **Step 0a**: Establish and record the High-Level Purpose in `OBJECTIVE.md`.
-- **Step 0b**: Establish concrete specifications via section-by-section interviewing. Root `SPEC.md` ("System Bible") MUST exist before sub-specs (`<topic>-<action>-spec.md`) can be created.
+### 1. Dedicated `ai-work/` Directory Structure & Step 0a/0b
+- All AI workflow artifacts MUST be saved in the `ai-work/` subdirectory:
+  - **Step 0a**: Establish and record High-Level Purpose in `ai-work/OBJECTIVE.md`.
+  - **Step 0b**: Establish concrete specifications via section-by-section interviewing. Root `ai-work/SPEC.md` ("System Bible") MUST exist before sub-specs (`ai-work/spec/<topic>-<action>-spec.md`) can be created.
 
 ### 2. Section-by-Section `SPEC.md` Interview Protocol
 - **Never Assume Spec Sections**: Do NOT populate any section of `SPEC.md` based on assumptions.
