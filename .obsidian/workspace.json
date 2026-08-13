@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ec4de78a23e356ed",
+        "id": "78d1627b7c2e81f4",
         "type": "tabs",
         "children": [
           {
-            "id": "5f13fc0c0f4ce517",
+            "id": "ce6000b0f0914acf",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GEMINI.md",
+                "file": "skills/planner/SKILL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "GEMINI.md",
+                "file": "skills/planner/SKILL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GEMINI.md",
+                "file": "skills/planner/SKILL.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,25 +188,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "5f13fc0c0f4ce517",
+  "active": "ce6000b0f0914acf",
   "lastOpenFiles": [
+    "ai-work/docs/adr-001-sandcastles-skills-architecture.md",
+    "GEMINI.md",
+    "skills/planner/SKILL.md",
+    "SPEC.md",
+    "skills/planner",
+    "ai-work/plan/skill-planner-plan.md",
+    "ai-work/spec/skill-planner-spec.md",
+    "ai-work/plan",
+    "ai-work/spec",
+    "document-skill-plan.md",
+    "OBJECTIVE.md",
     "spec-skill-spec.md",
     "skills/grill-me/SKILL.md",
-    "GEMINI.md",
     "skills/document/SKILL.md",
-    "ai-work/docs/adr-001-sandcastles-skills-architecture.md",
     "README.md",
     "ai-work/docs",
     "ai-work",
     "document-skill-test.md",
     "grill-me-skill-test.md",
     "skills/document",
-    "document-skill-plan.md",
     "document-skill-spec.md",
     "grill-me-skill-plan.md",
     "grill-me-skill-spec.md",
-    "SPEC.md",
-    "OBJECTIVE.md",
     "workflow-harness-core-spec.md",
     "skills/code/SKILL.md",
     "skills/report/SKILL.md",
@@ -216,7 +222,6 @@
     "skills/review/SKILL.md",
     "skills/review",
     "skills/code",
-    "skills/plan/SKILL.md",
-    "skills/plan"
+    "skills/plan/SKILL.md"
   ]
 }
