@@ -4,6 +4,8 @@
 *~
 .idea/
 .vscode/
+.obsidian/workspace.json
+.obsidian/workspace*.json
 
 # Local cache & logs
 .cache/
