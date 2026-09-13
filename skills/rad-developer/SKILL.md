@@ -1,16 +1,16 @@
 ---
 name: rad-developer
 description: >-
-  Rapid Application Development (RAD) generator for Symfony 6.4 LTS.
-  Consumes a database schema (SQL file, read-only live DB, or spec), verifies agent skills and runtime prerequisites,
-  scaffolds via Symfony Maker CLI, and deterministically upgrades the code to enterprise standards:
+  Rapid Application Development (RAD) generator for Symfony 6.4 LTS with state-recovery and atomic git workflow.
+  Logs preflight to ai-work/rad-development/preflight.log, generates an entities.json catalog and execution plan,
+  supports resumption from failure, scaffolds via Symfony Maker CLI, and refactors to enterprise standards:
   EasyAdmin 4 with autocomplete, Twig + Vite + SCSS frontend, and Doctrine ORM with eager joins (N+1 query prevention).
   Aliases: rad build, rad dev, scaffold symfony, generate crud, easyadmin scaffold.
 ---
 
 # ⚡ RAD Developer Skill (`rad-developer`)
 
-The `rad-developer` skill rapidly constructs production-grade web applications on **Symfony 6.4 LTS** from a database schema. It utilizes Symfony Maker CLI commands (`make:entity`, `make:crud`, `make:admin:crud`) as scaffolding accelerators, then immediately refactors the generated code to eliminate naive boilerplate shortcomings, enforcing **EasyAdmin 4** management with autocomplete relations, a **Twig + Vite + SCSS** frontend, and an optimized **Doctrine ORM** persistence layer engineered against N+1 query degradation and memory exhaustion.
+The `rad-developer` skill rapidly constructs production-grade web applications on **Symfony 6.4 LTS** from a database schema. It operates with a **crash-resilient state machine**, logging execution audits, generating an entity catalog and todo checklist, committing incrementally after every task, and supporting resumption from where it left off in case of interruptions.
 
 ---
 
@@ -33,7 +33,7 @@ The `rad-developer` skill rapidly constructs production-grade web applications o
 └───────────────────────────────────────────────────────────────┘
 ```
 
-1. **Framework Core**: **Symfony 6.4 LTS** (supported through Nov 2027) with PHP 8.2+ attribute support.
+1. **Framework Core**: **Symfony 6.4 LTS** (supported through Nov 2027) with PHP 8.2+ attributes.
 2. **Admin Layer**: **EasyAdmin 4** (`easycorp/easyadmin-bundle`) for CRUD dashboards.
 3. **Asset Pipeline**: **`pentatrion/vite-bundle`** + **`sass`** for Vite HMR and SCSS compilation.
 4. **ORM**: **Doctrine ORM 3.x** using PHP 8.2+ Attributes (`#[ORM\Entity]`, `#[ORM\Table]`, `#[Assert\...]`).
@@ -43,36 +43,36 @@ The `rad-developer` skill rapidly constructs production-grade web applications o
 ## 🛑 2. Scope Boundaries (Do's & Don'ts)
 
 ### ✅ Do's
-1. **Mandatory Preflight Checks**: Verify system binaries, Composer bundles, Node packages, and required agent skills before running any generation tasks.
-2. **Read-Only Live DB Safety Lock**: When connecting to an active database, perform strictly read-only schema reflection. Never alter schemas or run migrations without explicit user approval.
-3. **Scaffold Acceleration + Refinement**: Use `bin/console make:*` to quickly generate base files, then refactor them to enforce architectural standards.
-4. **Eager-Loaded Repositories**: Replace default `findAll()` calls with custom repository query methods using `LEFT JOIN` and `addSelect` for entity relationships to eliminate N+1 queries.
-5. **Autocomplete on Relations**: Always configure `AssociationField::new(...)->autocomplete()` in EasyAdmin CRUD controllers to prevent PHP memory exhaustion.
-6. **Strict Typing & Validations**: Enforce PHP 8.2+ strict types, ORM attributes, and Symfony Validator constraints (`#[Assert\...]`).
+1. **State-First Resumption**: Always inspect `ai-work/rad-development/plan.md` and `entities.json` first. If an incomplete plan exists, resume directly from the first uncompleted task.
+2. **Audit Logging**: Write all preflight execution results and timestamps to `ai-work/rad-development/preflight.log`.
+3. **Atomic Git Commits**: Commit changes after every completed entity/task (`Implement → Verify → Commit → Check-off`).
+4. **Read-Only Live DB Safety**: When inspecting an active database, perform strictly read-only schema reflection. Never execute migrations or DDL without explicit human confirmation.
+5. **Eager Joins & Autocomplete**: Replace `findAll()` with joined DQL queries (`LEFT JOIN FETCH` + `Paginator`) to eliminate N+1 queries. Always configure `AssociationField::autocomplete()` in EasyAdmin.
 
 ### ❌ Don'ts
-1. **No Naive `findAll()`**: Never leave unpaginated or non-joined `findAll()` queries in controllers for entities that have relations.
-2. **No Unconfirmed Migrations**: Never execute `doctrine:migrations:migrate` or destructive DDL on existing databases without explicit human confirmation.
-3. **No Unverified Syntax**: Run `php -l` (syntax check) and `bin/console lint:twig` on generated artifacts before declaring completion.
+1. **No Silent Re-runs**: Do not overwrite already completed entities when resuming from a crash or breakdown.
+2. **No Bulk Commits**: Do not bundle the entire application into a single massive commit; maintain a clean, incremental git history per entity.
+3. **No Naive `findAll()`**: Never leave unpaginated or non-joined queries in controllers for entities with relations.
+4. **No Unverified Syntax**: Verify every generated class via `php -l` and `bin/console lint:twig` before committing.
 
 ---
 
 ## ⚠️ 3. Critical Architectural Traps & Countermeasures
 
 ### ⚠️ Trap 1: The N+1 Query Disaster in Default CRUD
-- **The Problem**: Default `make:crud` outputs `findAll()` in controllers. When rendering related entities in Twig (e.g. `{{ order.customer.name }}`), Doctrine executes 1 query for the list + 50 queries for 50 customers.
-- **Countermeasure**: The generator must **never** use `findAll()` on entities with relations. It must generate custom repository methods using explicit `LEFT JOIN FETCH` (`createQueryBuilder('o')->leftJoin('o.customer', 'c')->addSelect('c')`) paired with `Doctrine\ORM\Tools\Pagination\Paginator`.
+- **The Problem**: Default `make:crud` outputs `findAll()`. Rendering related entities in Twig (e.g. `{{ order.customer.name }}`) triggers 1 query for the list + 50 queries for 50 records.
+- **Countermeasure**: Generate custom repository methods with explicit `LEFT JOIN FETCH` (`createQueryBuilder('o')->leftJoin('o.customer', 'c')->addSelect('c')`) and `Doctrine\ORM\Tools\Pagination\Paginator`.
 
 ### ⚠️ Trap 2: EasyAdmin Memory Exhaustion on Foreign Keys
-- **The Problem**: If table `orders` has a `user_id` relation, default EasyAdmin loads all 50,000 users into a `<select>` dropdown, exhausting PHP `memory_limit` and crashing the admin panel.
-- **Countermeasure**: All `AssociationField` instances in EasyAdmin must be generated with `.autocomplete()`:
+- **The Problem**: Default EasyAdmin loads entire related tables into `<select>` dropdowns, crashing PHP `memory_limit`.
+- **Countermeasure**: All `AssociationField` instances must use `.autocomplete()`:
   ```php
   yield AssociationField::new('customer')->autocomplete();
   ```
 
 ### ⚠️ Trap 3: Schema Type Misalignment
 - **The Problem**: Database columns allow loose data unless guarded at the entity level.
-- **Countermeasure**: Field introspection must generate strict PHP 8 types and dual validations:
+- **Countermeasure**: Generate strict PHP 8 types and dual validations:
   - `VARCHAR(255) NOT NULL` ➔ `string` + `#[Assert\NotBlank]` + `#[Assert\Length(max: 255)]`
   - `INT UNSIGNED` ➔ `int` + `#[Assert\PositiveOrZero]`
   - `DATETIME` ➔ `\DateTimeImmutable` + `DateTimeField`
@@ -81,105 +81,126 @@ The `rad-developer` skill rapidly constructs production-grade web applications o
 
 ## 📜 4. Execution Protocols
 
-### Step 1: Preflight Verification Protocol
-
-#### 1.1 Ecosystem Agent Skills Check
-Check `.skill-lock.json` and `skills/` for the following required skills. If any are missing, install them via `npx skills add`:
-```bash
-# Verify and install required domain skills
-npx skills add dev-toolings/superpowers-symfony@symfony:doctrine-relations
-npx skills add kgslotwinski/skills@easy-admin-bundle
-npx skills add mindrally/skills@scss-best-practices
-npx skills add antfu/skills@vite
-```
-
-#### 1.2 System & Package Preflight
-Inspect the project environment:
-```bash
-# System Binaries
-php -v                  # Must be >= 8.2 with pdo, intl, mbstring extensions
-composer -V             # Must exist
-node -v && npm -v       # Node >= 18, npm >= 9
-
-# Required Composer Bundles (composer.json)
-symfony/orm-pack
-symfony/maker-bundle
-easycorp/easyadmin-bundle
-pentatrion/vite-bundle
-symfony/validator
-symfony/form
-symfony/twig-bundle
-
-# Required Node Packages (package.json)
-vite
-sass
-```
-
-If any application dependency is missing, halt execution and output the required installation command:
-```bash
-composer require symfony/orm-pack easycorp/easyadmin-bundle pentatrion/vite-bundle symfony/validator symfony/form symfony/twig-bundle
-composer require --dev symfony/maker-bundle
-npm install --save-dev vite sass
-```
+### Phase 0: Resumption & Crash-Recovery Check
+Before starting any work, check if `ai-work/rad-development/` exists:
+1. If `ai-work/rad-development/plan.md` and `entities.json` exist:
+   - Read the files.
+   - Scan `plan.md` for the first unchecked item (`- [ ]`).
+   - Resume execution directly at that task. Do not re-run preflight or re-generate completed entities.
+2. If files do not exist:
+   - Initialize directory `mkdir -p ai-work/rad-development`.
+   - Proceed to Phase 1.
 
 ---
 
-### Step 2: Schema Ingestion Protocol
-The generator consumes schemas from three supported sources:
-- **Source A (SQL DDL File)**: Parses `schema.sql` (or output from `rad-interviewer`), extracting tables, column types, foreign keys, and indexes.
-- **Source B (Live Database)**: Reads live database metadata using Doctrine DBAL's `SchemaManager` in **strict read-only mode**.
-- **Source C (Structured Schema Document)**: Consumes entity specification tables from `ai-work/schema/`.
+### Phase 1: Preflight Verification & Logging
+Run system checks and log stdout/stderr with ISO timestamps to `ai-work/rad-development/preflight.log`:
 
----
-
-### Step 3: Hybrid Scaffolding & Refinement Protocol
-
-#### 3.1 Doctrine Entities & Repositories
-1. Run `bin/console make:entity --regenerate App` (or generate entity classes).
-2. Refactor entities with strict typing and validations (`#[Assert\NotBlank]`, `#[Assert\Length]`).
-3. Refactor repositories: Add paginated eager-join queries:
-   ```php
-   public function findWithRelationsPaginated(int $page = 1, int $limit = 20): Paginator
-   {
-       $qb = $this->createQueryBuilder('e')
-           ->leftJoin('e.relation', 'r')
-           ->addSelect('r')
-           ->orderBy('e.id', 'DESC')
-           ->setFirstResult(($page - 1) * $limit)
-           ->setMaxResults($limit);
-
-       return new Paginator($qb);
-   }
+1. **Ecosystem Skills Check**:
+   Verify installed skills in `.skill-lock.json` / `skills/`. Install if missing:
+   ```bash
+   npx skills add dev-toolings/superpowers-symfony@symfony:doctrine-relations
+   npx skills add kgslotwinski/skills@easy-admin-bundle
+   npx skills add mindrally/skills@scss-best-practices
+   npx skills add antfu/skills@vite
+   ```
+2. **Runtime & Packages Check**:
+   - PHP >= 8.2 (extensions: `pdo`, `intl`, `mbstring`).
+   - Composer, Node >= 18, npm >= 9.
+   - Composer bundles: `symfony/orm-pack`, `maker-bundle`, `easycorp/easyadmin-bundle`, `pentatrion/vite-bundle`, `symfony/validator`, `symfony/form`, `symfony/twig-bundle`.
+   - Node packages: `vite`, `sass`.
+3. **Log Output**:
+   Record all check outcomes to `ai-work/rad-development/preflight.log`. If any dependency is missing, halt and output the exact install command.
+4. **Git Commit**:
+   ```bash
+   git add ai-work/rad-development/preflight.log && git commit -m "chore(rad): complete preflight verification checks"
    ```
 
-#### 3.2 EasyAdmin 4 Backend Administration
-1. If not present, generate dashboard: `bin/console make:admin:dashboard`.
-2. Generate CRUD controllers: `bin/console make:admin:crud`.
-3. Refactor each CRUD controller:
-   - Configure fields with explicit types (`DateTimeField`, `MoneyField`, `ChoiceField`).
-   - Enforce autocomplete on all foreign key associations:
-     ```php
-     yield AssociationField::new('customer')->autocomplete();
+---
+
+### Phase 2: Schema Ingestion & Entity Catalog (`entities.json`)
+Parse the schema source (SQL DDL file, read-only live DB, or specification) and generate `ai-work/rad-development/entities.json`:
+
+```json
+{
+  "project": "app_name",
+  "generated_at": "2026-09-13T14:00:00Z",
+  "entities": [
+    {
+      "name": "Customer",
+      "table": "customers",
+      "status": "pending",
+      "relations": [
+        { "property": "orders", "type": "OneToMany", "target": "Order" }
+      ]
+    },
+    {
+      "name": "Order",
+      "table": "orders",
+      "status": "pending",
+      "relations": [
+        { "property": "customer", "type": "ManyToOne", "target": "Customer" }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+### Phase 3: Execution Plan Generation (`plan.md`)
+Generate `ai-work/rad-development/plan.md` with sequentially ordered tasks:
+- `[x] Preflight checks logged`
+- `[x] Schema ingested and entities.json created`
+- `[ ] Setup EasyAdmin Dashboard & Base Layout`
+- `[ ] Entity: Customer (Model, Repository, EasyAdmin CRUD, Frontend)`
+- `[ ] Entity: Order (Model, Repository, EasyAdmin CRUD, Frontend)`
+- `[ ] Final validation & schema integrity check`
+
+Commit the state files:
+```bash
+git add ai-work/rad-development/entities.json ai-work/rad-development/plan.md
+git commit -m "docs(rad): initialize entity catalog and execution plan"
+```
+
+---
+
+### Phase 4: Incremental Execution Loop (Per Entity)
+For each entity in `entities.json` where `status == "pending"`:
+
+1. **Scaffold & Accelerate**:
+   - `bin/console make:entity --regenerate App` (or generate entity classes).
+   - `bin/console make:admin:crud` for EasyAdmin.
+   - `bin/console make:crud <Entity>` for frontend.
+2. **Architectural Refactoring**:
+   - Add strict typing and `#[Assert\...]` validation attributes.
+   - Refactor repository: replace `findAll()` with eager-joined `findWithRelationsPaginated()`.
+   - Refactor EasyAdmin CRUD controller: add `yield AssociationField::new(...)->autocomplete()`, filters, and search fields.
+   - Refactor frontend controller: wire to paginated repository method; ensure `templates/base.html.twig` has Vite tags.
+3. **Empirical Verification**:
+   - `php -l src/Entity/<Entity>.php`
+   - `php -l src/Controller/Admin/<Entity>CrudController.php`
+   - `php -l src/Controller/Frontend/<Entity>Controller.php`
+   - `bin/console lint:twig templates/frontend/<entity>/`
+4. **State Update & Atomic Git Commit**:
+   - Update entity in `entities.json`: `"status": "completed"`.
+   - Mark task complete in `plan.md`: `- [x] Entity: <Entity>`.
+   - Commit changes:
+     ```bash
+     git add src/ templates/ ai-work/rad-development/
+     git commit -m "feat(rad): generate and optimize <Entity> CRUD (EasyAdmin & Frontend)"
      ```
-   - Add search fields and entity filters (`EntityFilter`, `DateTimeFilter`).
-
-#### 3.3 Frontend Presentation Layer (Twig + Vite + SCSS)
-1. Generate CRUD frontend: `bin/console make:crud <Entity>`.
-2. Refactor frontend controllers to use the repository's `findWithRelationsPaginated()` method instead of `findAll()`.
-3. Update `templates/base.html.twig` to embed Vite tags:
-   ```twig
-   {{ vite_entry_link_tags('app') }}
-   {{ vite_entry_script_tags('app') }}
-   ```
-4. Structure SCSS in `assets/styles/` using BEM modular patterns (`_variables.scss`, `_layout.scss`, `_components.scss`), compiled via `pentatrion/vite-bundle`.
 
 ---
 
-### Step 4: Verification & Linting
-Run syntax and template checks before declaring complete:
-```bash
-php -l src/Entity/*.php
-php -l src/Controller/*.php
-bin/console lint:twig templates/
-bin/console doctrine:schema:validate --skip-sync
-```
+### Phase 5: Final Verification & Audit
+1. Run schema and twig validation:
+   ```bash
+   bin/console doctrine:schema:validate --skip-sync
+   bin/console lint:twig templates/
+   ```
+2. Mark final task complete in `ai-work/rad-development/plan.md`.
+3. Commit and present summary report:
+   ```bash
+   git add ai-work/rad-development/plan.md && git commit -m "chore(rad): finalize application scaffolding"
+   ```
